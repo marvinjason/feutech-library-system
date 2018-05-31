@@ -10,7 +10,8 @@ class Auth::CallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    redirect_to :root
+    flash[:danger] = 'Authentication failed!'
+    redirect_to new_user_session_path
   end
 
   private
