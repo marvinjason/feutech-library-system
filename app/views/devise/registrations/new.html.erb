@@ -1,29 +1,64 @@
-<h2>Sign up</h2>
+<% if false %>
+  <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<section class="container">
+  <div class="left-half"> 
+    <div class="bg">
+      <h1 float:left>Library System</h1><br><br>
+      <h1>Borrow &amp; Reserve</h1><br><br>
+      <h1>Books.</h1>
+    </div>      
+  </div>
+
+  <div class="right-half">        
+    <center>
+      <%= image_tag 'lib.png', size: '200x80', style: 'margin-top: 5%' %>
+      <h1>Create an Account</h1>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= image_tag 'uname.png', align: 'middle' %>&nbsp;
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'email' %>
+        <br><br>
+
+        <%= image_tag 'pass.png', align: 'middle' %>&nbsp;
+        <%= f.password_field :password, autocomplete: "off", placeholder: 'password' %>
+        <br><br>
+
+        <%= f.submit "Sign up" %>
+      <% end %>
+
+      <br>
+
+      <p>Already have an account? <%= link_to 'Log in', new_user_session_path %></p>
+    </center>
+  </div>
+</section>
