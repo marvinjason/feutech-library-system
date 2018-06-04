@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
+  mount_uploader :avatar, AvatarUploader
+
   def self.from_omniauth(auth_hash)
     user = User.where(email: auth_hash.info.email).first
 
