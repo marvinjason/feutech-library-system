@@ -1,24 +1,86 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Resources
 
-Things you may want to cover:
+## books
+	id
+	title
+	publisher_id
+	publication_address
+	publication_year
+	description
+	edition
+	series
+	isbn
+	call_number
+	language
+	page_count
+	book_format
+	cover
+	total_count
+	created_at
+	updated_at
 
-* Ruby version
+## authors
+	id
+	last_name
+	first_name
+	avatar
+	description
+	created_at
+	updated_at
 
-* System dependencies
+## authorships
+	id
+	book_id
+	author_id
+	created_at
+	updated_at
 
-* Configuration
+## publishers
+	id
+	name
+	created_at
+	updated_at
 
-* Database creation
+## users
+	id
+	last_name
+	first_name
+	email
+	password
+	contact_number
+	address
+	role
+	provider
+	uid
+	avatar
+	created_at
+	updated_at
 
-* Database initialization
+## reservations
+	id
+	user_id
+	book_id
+	start
+	end
+	status [approved/rejected/pending]
+	created_at
+	updated_at
 
-* How to run the test suite
+## reviews
+	id
+	book_id
+	body
+	rating
+	user_id
+	created_at
+	updated_at
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## comments
+	id
+	body
+	user_id
+	book_id
+	comment_id
+	created_at
+	updated_at
