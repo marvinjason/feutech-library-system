@@ -1,11 +1,15 @@
 class User < ApplicationRecord
+  has_many :reservations
+  has_many :books, through: :reservations
+  has_many :reviews
+
+  mount_uploader :avatar, AvatarUploader
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
-
-  mount_uploader :avatar, AvatarUploader
 
   def self.from_omniauth(auth_hash)
     user = User.where(email: auth_hash.info.email).first
