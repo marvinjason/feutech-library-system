@@ -1,0 +1,27 @@
+Title: <%= @book.title %><br>
+Authors: <%= @book.authors.map { |a| [a.first_name, a.last_name].join(' ') }.join(', ') %><br>
+
+<br>
+
+Reviews:<br>
+<% if @reviews.present? %>
+  <% @reviews.each do |review| %>
+    Rating: <%= review.rating %><br>
+    <%= review.body %><br>
+    Posted by: <%= "#{review.user.first_name} #{review.user.last_name}" %><br>
+  <% end %>
+<% else %>
+  No reviews<br>
+<% end %>
+
+<br>
+
+Comments:<br>
+<% if @comments.present? %>
+  <% @comments.each do |comment| %>
+    <%= comment.body %><br>
+    Posted by: <%= "#{comment.user.first_name} #{comment.user.last_name}" %><br>
+  <% end %>
+<% else %>
+  No comments<br>
+<% end %>
