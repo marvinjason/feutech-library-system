@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :reservations
   has_many :books, through: :reservations
   has_many :reviews
+  has_many :comments
 
   mount_uploader :avatar, AvatarUploader
 
