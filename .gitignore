@@ -18,3 +18,4 @@
 
 .byebug_history
 /config/initializers/dev_environment.rb
+public/uploads/
