@@ -21,7 +21,7 @@ EDITIONS = ['Book Club', 'First', 'Second', 'Third'].freeze
     publisher: Publisher.all.sample,
     publication_address: Faker::Address.country,
     publication_year: (1980..2018).to_a.sample,
-    description: Faker::Lorem.paragraph,
+    description: Faker::Lorem.paragraph(15),
     edition: EDITIONS.sample,
     isbn: '978-3-16-148410-0',
     call_number: 'PR 8923 W6 L36 1990 c.3',
@@ -34,5 +34,43 @@ EDITIONS = ['Book Club', 'First', 'Second', 'Third'].freeze
 
   (1..2).to_a.sample.times do
     book.authors << Author.all.sample
+  end
+end
+
+User.create(
+  email: 'test@gmail.com',
+  password: '123456',
+  last_name: 'Doe',
+  first_name: 'John',
+  contact_number: '09123456789',
+  address: 'Philippines',
+  remote_avatar_url: 'https://semantic-ui.com/images/avatar/small/matt.jpg'
+)
+
+Book.all.each do |book|
+  3.times do
+    Review.create(
+      book: book,
+      user: User.first,
+      rating: (1..5).to_a.sample,
+      body: Faker::Lorem.paragraph(10)
+    )
+
+    comment = Comment.create(
+      book: book,
+      user: User.first,
+      body: Faker::Lorem.sentence(10)
+    )
+
+    if [true, false].sample
+      (1..3).to_a.sample.times do
+        Comment.create(
+          book: book,
+          user: User.first,
+          body: Faker::Lorem.sentence(10),
+          comment: comment
+        )
+      end
+    end
   end
 end
