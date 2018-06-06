@@ -9,6 +9,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="ui container">
+    	<%= render 'partials/flash_messages' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

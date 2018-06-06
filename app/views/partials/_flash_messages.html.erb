@@ -1,0 +1,15 @@
+<% flash.each do |key, value| %>
+	<% if value.is_a?(Hash) %>
+    <div class="ui <%= key %> message">
+      <i class="close icon"></i>
+      <div class="header">
+        <%= value['header'] %>
+      </div>
+      <p><%= value['body'] %></p>
+    </div>
+  <% else %>
+    <div class="ui warning message">
+      <p><%= value %></p>
+    </div>
+  <% end %>
+<% end %>

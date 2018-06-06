@@ -30,4 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  books:
+    reserve:
+      success:
+        header: Request successful
+        body: You have successfully requested to reserve this book
+      error:
+        header: Request unsuccessful
+        body: An error occured while requesting this book
