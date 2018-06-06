@@ -1,9 +1,39 @@
-.item {
-  .image {
-    width: 175px;
-    height: 145px;
-    object-fit: cover;
-    object-position: 50% 50%;
-    overflow: hidden;
+.cover-preview {
+  width: 175px;
+  height: 145px;
+  object-fit: cover;
+  object-position: 50% 50%;
+  overflow: hidden;
+}
+
+.author {
+  color: rgba(0, 0, 0, 1);
+  font-size: 0.9em;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.comment-actions {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.top-margin-1 {
+  margin-top: 1rem !important;
+}
+
+.details {
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  padding-top: 5px;
+  font-size: 0.8em;
+
+  .strong {
+    font-weight: bold;
   }
 }

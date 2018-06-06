@@ -12,7 +12,19 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @reviews = @book.reviews
-    @comments = @book.comments
+    @comments = @book.comments.where(comment_id: nil)
+
+    @authors_link =
+      @book.authors.map do |author|
+        "<a href='#{author_path(author)}' class='no-margin author'>#{author.first_name} #{author.last_name}</a>"
+      end
+
+    @score =
+      begin
+        @reviews.sum(:rating) / @reviews.count
+      rescue
+        0
+      end
   end
 
   def reserve
