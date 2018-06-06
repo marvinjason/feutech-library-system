@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, only: :reserve
+
   def featured
     @books = Book.limit(5)
   end
@@ -11,5 +13,26 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @reviews = @book.reviews
     @comments = @book.comments
+  end
+
+  def reserve
+    book = Book.find(params[:id])
+
+    Reservation.create!(
+      book: book,
+      user: current_user
+    )
+
+    flash[:success] = {
+      header: t('.success.header'),
+      body: t('.success.body')
+    }
+  rescue
+    flash[:negative] = {
+      header: t('.error.header'),
+      body: t('.error.body')
+    }
+  ensure
+    redirect_to action: :show
   end
 end

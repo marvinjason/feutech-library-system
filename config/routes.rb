@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'books/:id', to: 'books#show', as: 'book'
 
+  post 'books/:id', to: 'books#reserve'
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'auth/callbacks'
   }

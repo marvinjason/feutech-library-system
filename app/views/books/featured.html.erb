@@ -1,7 +1,52 @@
-<% @books.each do |book| %>
-  <%= book.title %>
-  <%= link_to 'View', book %>
-  <br>
-<% end %>
+<div class="ui grid">
+  <div class="row">
+    <div class="column">
+      <div class="ui medium centered header">Reserve &amp; Borrow books.</div>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+  </div>
 
-<%= link_to 'More', books_path %>
+  <div class="row">
+    <div class="column">
+      <div class="ui huge centered header">Books</div>
+
+      <div class="ui items">
+        <% @books.each do |book| %>
+          <div class="item">
+            <div class="image">
+              <img src="<%= book.cover.url %>">
+            </div>
+            <div class="content">
+              <%= link_to book.title, book, class: 'header' %>
+              <div class="meta">
+                <span>
+                  <%= book.authors.map { |b| "#{b.first_name} #{b.last_name}" }.join(', ') %>
+                  &middot;
+                  <%= book.publication_year %>
+                </span>
+              </div>
+              <div class="description">
+                <p><%= truncate(book.description, length: 255) %></p>
+              </div>
+              <div class="extra">
+                <%= book.total_count %> copies available
+                <%= link_to book, method: :post do %>
+                  <div class="ui right floated basic button">
+                    <i class="check icon"></i>
+                    Reserve
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+
+      <%= link_to 'More', books_path %>      
+    </div>
+  </div>
+</div>
+
+
+
