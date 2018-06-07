@@ -1,14 +1,14 @@
 <div class="ui grid">
   <div class="row">
     <div class="column">
-      <div class="ui medium centered header">Reserve &amp; Borrow books.</div>
+      <div class="ui medium centered header blue-font">Reserve &amp; Borrow books.</div>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
     </div>
   </div>
 
   <div class="row">
     <div class="column">
-      <div class="ui huge centered header">Books</div>
+      <div class="ui huge centered header blue-font">Books</div>
 
       <div class="ui items">
         <% @books.each do |book| %>
@@ -43,10 +43,10 @@
         <% end %>
       </div>
 
-      <%= link_to 'More', books_path %>      
+      <div class="ui center aligned basic segment">
+        <%= link_to 'More books', books_path, class: 'ui blue center aligned basic button' %>
+      </div>
+
     </div>
   </div>
 </div>
-
-
-

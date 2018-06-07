@@ -19,6 +19,10 @@
     padding: 0 !important;
 }
 
+.padding-2 {
+  padding: 2rem !important;
+}
+
 .comment-actions {
   margin-top: 1rem;
   text-align: right;
@@ -36,4 +40,8 @@
   .strong {
     font-weight: bold;
   }
+}
+
+.blue-font {
+  color: #4286f4 !important;
 }
