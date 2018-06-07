@@ -32,7 +32,9 @@ class BooksController < ApplicationController
 
     Reservation.create!(
       book: book,
-      user: current_user
+      user: current_user,
+      start: params[:from],
+      end: params[:to]
     )
 
     flash[:success] = {
