@@ -8,6 +8,11 @@ var ready = function() {
     $(this).hide();
     $('#review-field').show();
   });
+
+  $('.ui.rating').rating({
+    initialRating: 3,
+    maxRating: 5
+  });
 };
 
 // $(document).ready(ready);
