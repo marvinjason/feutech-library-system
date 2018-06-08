@@ -22,7 +22,7 @@ class BooksController < ApplicationController
 
     @score =
       begin
-        @reviews.sum(:rating) / @reviews.count
+        (@reviews.sum(:rating) / @reviews.count.to_f).round
       rescue
         0
       end
