@@ -152,21 +152,22 @@
   <p class="comment-actions">
     <a href="#" id="review-link">Write a review</a>
 
-    <form id="review-field" class="ui reply form">
+    <%= form_tag review_path(@book), class: 'ui reply form', id: 'review-field' do %>
       <div class="field">
-        <textarea></textarea>
+        <textarea name="body"></textarea>
       </div>
 
       <div class="bottom-margin-1">
         Rating:
-        <div class="ui star rating"></div>
+        <div class="ui star rating" data-rating="3" data-max-rating="5"></div>
       </div>
 
-      <div class="ui tiny blue labeled submit icon button">
+      <input type="hidden" name="rating" value="3" id="rating">
+
+      <button type="submit" class="ui tiny blue labeled submit icon button">
         <i class="icon edit"></i> Post
-      </div>
-
-    </form>
+      </button>
+    <% end %>
   </p>
 </div>
 

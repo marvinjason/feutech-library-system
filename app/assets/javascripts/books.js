@@ -9,9 +9,8 @@ var ready = function() {
     $('#review-field').show();
   });
 
-  $('.ui.rating').rating({
-    initialRating: 3,
-    maxRating: 5
+  $('.ui.rating').rating('setting', 'onRate', function(value) {
+    $('#rating').val(value);
   });
 };
 

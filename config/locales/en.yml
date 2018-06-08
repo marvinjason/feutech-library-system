@@ -38,3 +38,10 @@ en:
       error:
         header: Request unsuccessful
         body: An error occured while requesting this book
+    review:
+      success:
+        header: Review successful
+        body: You have successfully posted your review
+      error:
+        header: Review unsuccessful
+        body: An error occured while posting your review

@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, only: :reserve
+  before_action :store_location_for_review, only: :review
+  before_action :authenticate_user!, only: [:reserve, :review]
 
   def featured
     @books = Book.limit(5)
@@ -48,5 +49,34 @@ class BooksController < ApplicationController
     }
   ensure
     redirect_to action: :show
+  end
+
+  def review
+    book = Book.find(params[:id])
+
+    Review.create!(
+      book: book,
+      user: current_user,
+      rating: params[:rating],
+      body: params[:body]
+    )
+
+    flash[:success] = {
+      header: t('.success.header'),
+      body: t('.success.body')
+    }
+  rescue
+    flash[:negative] = {
+      header: t('.error.header'),
+      body: t('.error.body')
+    }
+  ensure
+    redirect_to book
+  end
+
+  private
+  def store_location_for_review
+    book = Book.find(params[:id])
+    store_location_for(:user, book_path(book))
   end
 end

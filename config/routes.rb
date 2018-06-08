@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   post 'books/:id', to: 'books#reserve'
 
+  post 'books/:id/review', to: 'books#review', as: 'review'
+
   get 'authors/:id', to: 'authors#show', as: 'author'
 
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
