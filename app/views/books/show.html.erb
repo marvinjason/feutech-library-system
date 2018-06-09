@@ -4,32 +4,32 @@
       Loan Period
     </div>
 
-    <div class="image content">
-      <div class="description">
-        <div class="ui header">How long would you like to borrow that?</div>
-        <div class="ui input">
-          <div class="ui label">
+      <div class="image content">
+        <div class="description">
+          <div class="ui header">How long would you like to borrow that?</div>
+          <div class="ui input">
+            <div class="ui label">
 
     <%= form_tag @book do %>
 
-            From
-            <input type="date" name="from">
-          </div>
+              From
+              <input type="date" name="from">
+            </div>
 
-          <div class="ui label">
-            To
-            <input type="date" name="to">
+            <div class="ui label">
+              To
+              <input type="date" name="to">
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="actions">
-      <button type="submit" class="ui positive right labeled icon button">
-        Reserve
-        <i class="checkmark icon"></i>
-      </button>
-    </div>
+      <div class="actions">
+        <button type="submit" class="ui positive right labeled icon button">
+          Reserve
+          <i class="checkmark icon"></i>
+        </button>
+      </div>
 
     <% end %>
 </div>
@@ -185,7 +185,7 @@
           <a class="author"><%= "#{comment.user.first_name} #{comment.user.last_name}" %></a>
 
           <div class="metadata">
-            <span class="date"><%= time_ago_in_words(comment.created_at) %></span>
+            <span class="date"><%= time_ago_in_words(comment.created_at) %> ago</span>
           </div>
 
           <div class="text">
@@ -198,25 +198,31 @@
         </div>
 
         <% if comment.comments.present? %>
-          <% comment.comments.each do |reply| %>
-            <div class="comment">
-              <a class="avatar">
-                <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
-              </a>
-              <div class="content">
-                <a class="author">Jenny Hess</a>
-                <div class="metadata">
-                  <span class="date">Just now</span>
-                </div>
-                <div class="text">
-                  Elliot you are always so right :)
-                </div>
-                <div class="actions">
-                  <a class="reply">Reply</a>
+          <div class="comments">
+            <% comment.comments.each do |reply| %>
+              <div class="comment">
+                <a class="avatar">
+                  <%= image_tag reply.user.avatar.url %>
+                </a>
+
+                <div class="content">
+                  <a class="author"><%= "#{reply.user.first_name} #{reply.user.last_name}" %></a>
+
+                  <div class="metadata">
+                    <span class="date"><%= time_ago_in_words(reply.created_at) %> ago</span>
+                  </div>
+
+                  <div class="text">
+                    <%= reply.body %>
+                  </div>
+
+                  <div class="actions">
+                    <a class="reply">Reply</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         <% end %>
       </div>
     <% end %>
