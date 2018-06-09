@@ -1,5 +1,23 @@
-<% @books.each do |book| %>
-  <%= book.title %>
-  <%= link_to 'View', book %>
-  <br>
-<% end %>
+<div class="ui cards">
+  <% @books.each do |book| %>
+
+    <div class="card">
+      <div class="image">
+      <%= image_tag book.cover.url %>
+      </div>
+
+      <div class="content">
+        <%= link_to book.title, book, class: 'header' %>
+
+        <div class="meta">
+          <span class="date"><%= book.author %></span>
+        </div>
+      </div>
+
+      <%= link_to book, class: 'ui bottom attached button' do %>
+        <i class="bars icon"></i>
+        View
+      <% end %>
+    </div>
+  <% end %>
+</div>
