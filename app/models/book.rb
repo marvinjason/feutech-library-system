@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   has_many :users, through: :reservations
   has_many :reviews
   has_many :comments
+  has_many :logs, as: :logable
 
   mount_uploader :cover, AvatarUploader
 

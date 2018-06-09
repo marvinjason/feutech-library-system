@@ -6,4 +6,5 @@ class Comment < ApplicationRecord
     foreign_key: 'comment_id',
     optional: true
   has_many :comments
+  has_many :logs, as: :logable
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180604171459) do
+ActiveRecord::Schema.define(version: 20180609112618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,17 @@ ActiveRecord::Schema.define(version: 20180604171459) do
     t.index ["book_id"], name: "index_comments_on_book_id"
     t.index ["comment_id"], name: "index_comments_on_comment_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "logs", force: :cascade do |t|
+    t.string "logable_type"
+    t.bigint "logable_id"
+    t.string "log_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["logable_type", "logable_id"], name: "index_logs_on_logable_type_and_logable_id"
+    t.index ["user_id"], name: "index_logs_on_user_id"
   end
 
   create_table "publishers", force: :cascade do |t|
@@ -125,6 +136,7 @@ ActiveRecord::Schema.define(version: 20180604171459) do
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "comments"
   add_foreign_key "comments", "users"
+  add_foreign_key "logs", "users"
   add_foreign_key "reservations", "books"
   add_foreign_key "reservations", "users"
   add_foreign_key "reviews", "books"
