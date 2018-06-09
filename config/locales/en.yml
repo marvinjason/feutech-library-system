@@ -45,3 +45,10 @@ en:
       error:
         header: Review unsuccessful
         body: An error occured while posting your review
+    comment:
+      success:
+        header: Success
+        body: You have successfully posted your comment
+      error:
+        header: Error
+        body: An error occured while posting your comment

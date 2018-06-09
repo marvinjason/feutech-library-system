@@ -74,6 +74,28 @@ class BooksController < ApplicationController
     redirect_to book
   end
 
+  def comment
+    book = Book.find(params[:id])
+
+    Comment.create!(
+      book: book,
+      user: current_user,
+      body: params[:body]
+    )
+
+    flash[:success] = {
+      header: t('.success.header'),
+      body: t('.success.body')
+    }
+  rescue
+    flash[:negative] = {
+      header: t('.error.header'),
+      body: t('.error.body')
+    }
+  ensure
+    redirect_to book
+  end
+
   private
   def store_location_for_review
     book = Book.find(params[:id])

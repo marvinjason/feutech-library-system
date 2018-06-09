@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post 'books/:id/review', to: 'books#review', as: 'review'
 
+  post 'books/:id/comment', to: 'books#comment', as: 'comment'
+
   get 'authors/:id', to: 'authors#show', as: 'author'
 
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'

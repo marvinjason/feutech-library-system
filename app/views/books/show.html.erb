@@ -229,12 +229,13 @@
     </h3>
   <% end %>
 
-  <form class="ui reply form">
+  <%= form_tag comment_path(@book), class: 'ui reply form' do %>
     <div class="field">
-      <textarea></textarea>
+      <textarea name="body"></textarea>
     </div>
-    <div class="ui tiny blue labeled submit icon button">
-      <i class="icon edit"></i> Reply
-    </div>
-  </form>
+
+    <button type="submit" class="ui tiny blue labeled submit icon button">
+      <i class="icon edit"></i> Post
+    </button>
+  <% end %>
 </div>
