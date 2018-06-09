@@ -20,7 +20,7 @@
               <%= link_to book.title, book, class: 'header' %>
               <div class="meta">
                 <span>
-                  <%= book.authors.map { |b| "#{b.first_name} #{b.last_name}" }.join(', ') %>
+                  <%= book.author %>
                   &middot;
                   <%= book.publication_year %>
                 </span>

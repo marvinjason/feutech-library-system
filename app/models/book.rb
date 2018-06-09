@@ -8,4 +8,9 @@ class Book < ApplicationRecord
   has_many :comments
 
   mount_uploader :cover, AvatarUploader
+
+  def author
+    authors = self.authors.map { |a| "#{a.first_name} #{a.last_name}" }
+    authors.join(', ')
+  end
 end
