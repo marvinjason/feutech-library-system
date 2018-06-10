@@ -5,7 +5,7 @@ class CreateReservations < ActiveRecord::Migration[5.1]
       t.belongs_to :book, foreign_key: true
       t.datetime :start
       t.datetime :end
-      t.string :status
+      t.string :status, default: 'pending'
 
       t.timestamps
     end
