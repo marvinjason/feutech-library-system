@@ -1,0 +1,64 @@
+<div class="event">
+  <div class="label">
+    <%= image_tag avatar_url %>
+  </div>
+
+  <div class="content">
+    <div class="date">
+      <%= time_ago_in_words(created_at) %> ago
+    </div>
+
+    <div class="summary">
+        <a><%= requester_name %></a> requested to reserve <%= link_to book.title, book %>
+    </div>
+
+    <div class="extra images">
+
+      <div class="ui card">
+        <div class="content">
+          <% if status == 'approved' %>
+            <i class="right floated green check icon"></i>
+          <% elsif status == 'rejected' %>
+            <i class="right floated red remove icon"></i>
+          <% end %>
+
+          <div class="header">
+            <%= request_start %> &ndash; <%= request_end %>
+          </div>
+
+          <div class="meta no-margin bottom-margin-1">
+            loan for <%= duration %>
+          </div>
+
+          <% if status == 'pending' %>
+            <div class="ui two buttons">
+              <button class="ui basic green button">
+                <i class="check icon"></i>
+                Approve
+              </button>
+
+              <button class="ui basic red button">
+                <i class="remove icon"></i>
+                Decline
+              </button>
+            </div>
+          <% else %>
+            <div class="ui two buttons">
+              <button class="ui basic green disabled button">
+                <i class="check icon"></i>
+                Approve
+              </button>
+
+              <button class="ui basic red disabled button">
+                <i class="remove icon"></i>
+                Decline
+              </button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

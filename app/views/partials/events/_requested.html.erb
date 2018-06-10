@@ -1,0 +1,19 @@
+<div class="event">
+  <div class="label">
+    <%= image_tag avatar_url %>
+  </div>
+
+  <div class="content">
+    <div class="date">
+      <%= time_ago_in_words(created_at) %> ago
+    </div>
+
+    <div class="summary">
+        <a><%= requester_name %></a> requested to reserve <%= link_to book.title, book %>
+    </div>
+
+    <div class="extra images">
+      <%= image_tag book.cover.url %>
+    </div>
+  </div>
+</div>

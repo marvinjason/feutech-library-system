@@ -2,17 +2,27 @@
   <% @logs.each do |log| %>
     <% case log.log_type %>
     <% when 'reservation' %>
-      <%= render 'partials/events/reservation',
+      <%= render 'partials/events/requested',
           avatar_url: log.user.avatar.url,
           created_at: log.created_at,
+          requester_name: 'You',
           book: log.logable.book
       %>
     <% when 'approval' %>
-      <%= render 'partials/events/approval',
+      <%= render 'partials/events/approved',
           avatar_url: log.user.avatar.url,
           created_at: log.created_at,
           book: log.logable.book,
-          approver_name: log.user.first_name
+          approver_name: log.user.first_name,
+          requester_name: 'your'
+      %>
+    <% when 'rejection' %>
+      <%= render 'partials/events/rejected',
+          avatar_url: log.user.avatar.url,
+          created_at: log.created_at,
+          book: log.logable.book,
+          rejecter_name: log.user.first_name,
+          requester_name: 'your'
       %>
     <% end %>
   <% end %>

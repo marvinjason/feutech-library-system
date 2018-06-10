@@ -10,12 +10,12 @@
         <%= form_tag @book, id: 'loan' do %>
           <div class="ui label">
             From
-            <input type="date" name="from">
+            <input type="date" name="from" required>
           </div>
 
           <div class="ui label">
             To
-            <input type="date" name="to">
+            <input type="date" name="to" required>
           </div>
         <% end %>
       </div>

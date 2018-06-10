@@ -9,7 +9,7 @@
     </div>
 
     <div class="summary">
-        <a><%= approver_name %></a> approved your request to reserve <%= link_to book.title, book %>
+        <a><%= approver_name %></a> approved <%= requester_name == 'your' ? requester_name : (link_to requester_name, '') %> request to reserve <%= link_to book.title, book %>
     </div>
 
     <div class="extra images">
