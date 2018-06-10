@@ -18,6 +18,38 @@
         <%= link_to 'Home', root_path, class: 'item' %>
         <%= link_to 'Dashboard', dashboard_path, class: 'item' %>
         <a class="item">OPAC</a>
+        <div class="ui left pointing dropdown link item">
+          Resources
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="ui left pointing dropdown link item">
+              <i class="book icon"></i> Books
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <a class="item"><i class="list icon"></i> List</a>
+                <a class="item"><i class="plus icon"></i> New</a>
+              </div>
+            </div>
+
+            <div class="ui left pointing dropdown link item">
+              <i class="user icon"></i> Authors
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <a class="item"><i class="list icon"></i> List</a>
+                <a class="item"><i class="plus icon"></i> New</a>
+              </div>
+            </div>
+
+            <div class="ui left pointing dropdown link item">
+              <i class="user icon"></i> Publishers
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <a class="item"><i class="list icon"></i> List</a>
+                <a class="item"><i class="plus icon"></i> New</a>
+              </div>
+            </div>
+          </div>
+        </div>
         <%= link_to 'Reservations', reservations_path, class: 'item' %>
         <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'item' %>
       <% else %>
