@@ -13,7 +13,6 @@
     </div>
 
     <div class="extra images">
-
       <div class="ui card">
         <div class="content">
           <% if status == 'approved' %>
@@ -32,33 +31,31 @@
 
           <% if status == 'pending' %>
             <div class="ui two buttons">
-              <button class="ui basic green button">
+              <%= link_to approve_path(reservation_id), method: :post, class: 'ui basic green button' do %>
                 <i class="check icon"></i>
                 Approve
-              </button>
+              <% end %>
 
-              <button class="ui basic red button">
+              <%= link_to reject_path(reservation_id), method: :post, class: 'ui basic red button' do %>
                 <i class="remove icon"></i>
                 Decline
-              </button>
+              <% end %>
             </div>
           <% else %>
             <div class="ui two buttons">
-              <button class="ui basic green disabled button">
+              <%= link_to approve_path(reservation_id), method: :post, class: 'ui basic green disabled button' do %>
                 <i class="check icon"></i>
                 Approve
-              </button>
+              <% end %>
 
-              <button class="ui basic red disabled button">
+              <%= link_to reject_path(reservation_id), method: :post, class: 'ui basic red disabled button' do %>
                 <i class="remove icon"></i>
                 Decline
-              </button>
+              <% end %>
             </div>
           <% end %>
         </div>
       </div>
-
-
     </div>
   </div>
 </div>

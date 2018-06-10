@@ -10,7 +10,8 @@
           request_start: log.logable.start.strftime('%b %e'),
           request_end: log.logable.end.strftime('%b %e'),
           duration: distance_of_time_in_words(log.logable.start, log.logable.end),
-          status: log.logable.status
+          status: log.logable.status,
+          reservation_id: log.logable.id
       %>
     <% when 'approval' %>
       <%= render 'partials/events/approved',

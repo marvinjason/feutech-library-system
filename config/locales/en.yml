@@ -52,3 +52,19 @@ en:
       error:
         header: Error
         body: An error occured while posting your comment
+
+  reservations:
+    approve:
+      success:
+        header: Success
+        body: You have successfully approved the reservation
+      error:
+        header: Error
+        body: An error occured while approving the reservation
+    reject:
+      success:
+        header: Success
+        body: You have successfully rejected the reservation
+      error:
+        header: Error
+        body: An error occured while rejecting the reservation

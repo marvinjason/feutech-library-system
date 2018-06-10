@@ -20,6 +20,10 @@ Rails.application.routes.draw do
 
   post 'reservations', to: 'reservations#index', as: 'search_reservations'
 
+  post 'reservations/:id/approve', to: 'reservations#approve', as: 'approve'
+
+  post 'reservations/:id/reject', to: 'reservations#reject', as: 'reject'
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'auth/callbacks'
   }
