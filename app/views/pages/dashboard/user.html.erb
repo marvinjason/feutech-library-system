@@ -1,16 +1,19 @@
 <div class="ui feed">
-  <div class="event">
-    <div class="label">
-      <img src="<%%>">
-    </div>
-
-    <div class="content">
-      <div class="summary">
-        You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-        <div class="date">
-          3 days ago
-        </div>
-      </div>
-    </div>
-  </div>
+  <% @logs.each do |log| %>
+    <% case log.log_type %>
+    <% when 'reservation' %>
+      <%= render 'partials/events/reservation',
+          avatar_url: log.user.avatar.url,
+          created_at: log.created_at,
+          book: log.logable.book
+      %>
+    <% when 'approval' %>
+      <%= render 'partials/events/approval',
+          avatar_url: log.user.avatar.url,
+          created_at: log.created_at,
+          book: log.logable.book,
+          approver_name: log.user.first_name
+      %>
+    <% end %>
+  <% end %>
 </div>

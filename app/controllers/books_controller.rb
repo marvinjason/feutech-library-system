@@ -31,11 +31,17 @@ class BooksController < ApplicationController
   def reserve
     book = Book.find(params[:id])
 
-    Reservation.create!(
+    reservation = Reservation.create!(
       book: book,
       user: current_user,
       start: params[:from],
       end: params[:to]
+    )
+
+    Log.create(
+      user: current_user,
+      logable: reservation,
+      log_type: 'reservation'
     )
 
     flash[:success] = {
