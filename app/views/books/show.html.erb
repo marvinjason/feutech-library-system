@@ -1,37 +1,33 @@
 <div class="ui tiny modal">
   <i class="close icon"></i>
-    <div class="header">
-      Loan Period
-    </div>
+  <div class="header">Loan Period</div>
 
-      <div class="image content">
-        <div class="description">
-          <div class="ui header">How long would you like to borrow that?</div>
-          <div class="ui input">
-            <div class="ui label">
+  <div class="image content">
+    <div class="description">
+      <div class="ui header">How long would you like to borrow that?</div>
 
-    <%= form_tag @book do %>
-
-              From
-              <input type="date" name="from">
-            </div>
-
-            <div class="ui label">
-              To
-              <input type="date" name="to">
-            </div>
+      <div class="ui input">
+        <%= form_tag @book, id: 'loan' do %>
+          <div class="ui label">
+            From
+            <input type="date" name="from">
           </div>
-        </div>
-      </div>
 
-      <div class="actions">
-        <button type="submit" class="ui positive right labeled icon button">
-          Reserve
-          <i class="checkmark icon"></i>
-        </button>
+          <div class="ui label">
+            To
+            <input type="date" name="to">
+          </div>
+        <% end %>
       </div>
+    </div>
+  </div>
 
-    <% end %>
+  <div class="actions">
+    <button type="submit" form="loan" class="ui positive right labeled icon button">
+      Reserve
+      <i class="checkmark icon"></i>
+    </button>
+  </div>
 </div>
 
 <div class="ui items">
