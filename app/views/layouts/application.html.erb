@@ -17,59 +17,63 @@
       <% if current_user %>
         <%= link_to 'Home', root_path, class: 'item' %>
         <%= link_to 'Dashboard', dashboard_path, class: 'item' %>
-        <a class="item">OPAC</a>
-        <div class="ui left pointing dropdown link item">
-          Resources
-          <i class="dropdown icon"></i>
-          <div class="menu">
-            <div class="ui left pointing dropdown link item">
-              <i class="book icon"></i> Books
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <%= link_to admin_books_path, class: 'item' do %>
-                  <i class="list icon"></i> List
-                <% end %>
+        <!-- <a class="item">OPAC</a> -->
 
-                <%= link_to new_admin_book_path, class: 'item' do %>
-                  <i class="plus icon"></i> New
-                <% end %>
+        <% unless current_user.role == 'user' %>
+          <div class="ui left pointing dropdown link item">
+            Resources
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="ui left pointing dropdown link item">
+                <i class="book icon"></i> Books
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <%= link_to admin_books_path, class: 'item' do %>
+                    <i class="list icon"></i> List
+                  <% end %>
+
+                  <%= link_to new_admin_book_path, class: 'item' do %>
+                    <i class="plus icon"></i> New
+                  <% end %>
+                </div>
               </div>
-            </div>
 
-            <div class="ui left pointing dropdown link item">
-              <i class="user icon"></i> Authors
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <%= link_to admin_authors_path, class: 'item' do %>
-                  <i class="list icon"></i> List
-                <% end %>
+              <div class="ui left pointing dropdown link item">
+                <i class="user icon"></i> Authors
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <%= link_to admin_authors_path, class: 'item' do %>
+                    <i class="list icon"></i> List
+                  <% end %>
 
-                <%= link_to new_admin_author_path, class: 'item' do %>
-                  <i class="plus icon"></i> New
-                <% end %>
+                  <%= link_to new_admin_author_path, class: 'item' do %>
+                    <i class="plus icon"></i> New
+                  <% end %>
+                </div>
               </div>
-            </div>
 
-            <div class="ui left pointing dropdown link item">
-              <i class="user icon"></i> Publishers
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <%= link_to admin_publishers_path, class: 'item' do %>
-                  <i class="list icon"></i> List
-                <% end %>
+              <div class="ui left pointing dropdown link item">
+                <i class="user icon"></i> Publishers
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <%= link_to admin_publishers_path, class: 'item' do %>
+                    <i class="list icon"></i> List
+                  <% end %>
 
-                <%= link_to new_admin_publisher_path, class: 'item' do %>
-                  <i class="plus icon"></i> New
-                <% end %>
+                  <%= link_to new_admin_publisher_path, class: 'item' do %>
+                    <i class="plus icon"></i> New
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
+
         <%= link_to 'Reservations', reservations_path, class: 'item' %>
         <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'item' %>
       <% else %>
         <%= link_to 'Home', root_path, class: 'item' %>
-        <a class="item">OPAC</a>
+        <!-- <a class="item">OPAC</a> -->
         <%= link_to 'Log In', new_user_session_path, class: 'item' %>
         <%= link_to 'Sign Up', new_user_registration_path, class: 'item' %>
       <% end %>
