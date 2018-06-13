@@ -44,7 +44,18 @@ User.create(
   first_name: 'John',
   contact_number: '09123456789',
   address: 'Philippines',
-  remote_avatar_url: 'https://semantic-ui.com/images/avatar/small/matt.jpg'
+  remote_avatar_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqLwXLSt7nY_iW0vRguTgVIH1gjwuhx28PjI_Dc964oTRx0No'
+)
+
+User.create(
+  email: 'librarian@gmail.com',
+  password: '123456',
+  last_name: 'Gabarda',
+  first_name: 'Lorenzo',
+  contact_number: '09123456789',
+  address: 'Philippines',
+  remote_avatar_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqLwXLSt7nY_iW0vRguTgVIH1gjwuhx28PjI_Dc964oTRx0No',
+  role: 'librarian'
 )
 
 Book.all.each do |book|
