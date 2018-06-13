@@ -51,6 +51,26 @@ class Admin::AuthorsController < ApplicationController
     end
   end
 
+  def destroy
+    author = Author.find(params[:id])
+
+    if author.destroy
+      flash[:success] = {
+        header: t('.success.header'),
+        body: t('.success.body')
+      }
+
+      redirect_to action: :index
+    else
+      flash[:negative] = {
+        header: t('.error.header'),
+        body: t('.error.body')
+      }
+
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   private
   def author_params
     params.require(:author).permit(:last_name, :first_name, :description, :avatar)

@@ -70,23 +70,47 @@ en:
         body: An error occured while rejecting the reservation
   admin:
     authors:
-      success:
-        header: Success
-        body: You have successfully created the author
-      error:
-        header: Error
-        body: An error occured while creating the reservation
+      create:
+        success:
+          header: Success
+          body: You have successfully created the author
+        error:
+          header: Error
+          body: An error occured while creating the author
+      destroy:
+        success:
+          header: Success
+          body: You have successfully deleted the author
+        error:
+          header: Error
+          body: An error occured while deleting the author
     books:
-      success:
-        header: Success
-        body: You have successfully created the book
-      error:
-        header: Error
-        body: An error occured while creating the book
+      create:
+        success:
+          header: Success
+          body: You have successfully created the book
+        error:
+          header: Error
+          body: An error occured while creating the book
+      destroy:
+        success:
+          header: Success
+          body: You have successfully deleted the book
+        error:
+          header: Error
+          body: An error occured while deleting the book
     publishers:
-      success:
-        header: Success
-        body: You have successfully created the publisher
-      error:
-        header: Error
-        body: An error occured while creating the publisher
+      create:
+        success:
+          header: Success
+          body: You have successfully created the publisher
+        error:
+          header: Error
+          body: An error occured while creating the publisher
+      destroy:
+        success:
+          header: Success
+          body: You have successfully deleted the publisher
+        error:
+          header: Error
+          body: An error occured while deleting the publisher

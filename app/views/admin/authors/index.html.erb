@@ -22,6 +22,7 @@
     <tr>
       <th>Last Name</th>
       <th>First Name</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -30,6 +31,15 @@
       <tr>
         <td><%= author.last_name %></td>
         <td><%= author.first_name %></td>
+        <td>
+          <%= link_to edit_admin_author_path(author), class: 'circular ui icon button' do %>
+            <i class="edit icon"></i>
+          <% end %>
+
+          <%= link_to admin_author_path(author), method: :delete, class: 'circular ui icon button', data: {confirm: 'Are you sure you want to proceed?'} do %>
+            <i class="trash icon"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
