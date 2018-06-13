@@ -5,6 +5,6 @@ class Comment < ApplicationRecord
     class_name: 'Comment',
     foreign_key: 'comment_id',
     optional: true
-  has_many :comments
-  has_many :logs, as: :logable
+  has_many :comments, dependent: :destroy
+  has_many :logs, as: :logable, dependent: :destroy
 end

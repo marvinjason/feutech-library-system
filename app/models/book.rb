@@ -1,12 +1,12 @@
 class Book < ApplicationRecord
   belongs_to :publisher
-  has_many :authorships
+  has_many :authorships, dependent: :destroy
   has_many :authors, through: :authorships
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
   has_many :users, through: :reservations
-  has_many :reviews
-  has_many :comments
-  has_many :logs, as: :logable
+  has_many :reviews, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :logs, as: :logable, dependent: :destroy
 
   mount_uploader :cover, AvatarUploader
 

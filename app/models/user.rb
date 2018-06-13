@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
   has_many :books, through: :reservations
-  has_many :reviews
-  has_many :comments
-  has_many :logs
+  has_many :reviews, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :logs, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 
