@@ -30,7 +30,7 @@
     <% @books.each do |book| %>
       <tr>
         <td><%= book.isbn %></td>
-        <td><%= book.title %></td>
+        <td><%= link_to book.title, book, class: 'black-font' %></td>
         <td>
           <%= link_to edit_admin_book_path(book), class: 'circular ui icon button' do %>
             <i class="edit icon"></i>
