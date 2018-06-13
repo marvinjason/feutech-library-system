@@ -43,8 +43,8 @@ class Admin::BooksController < ApplicationController
       redirect_to book
     else
       flash[:negative] = {
-        header: t('.success.header'),
-        body: t('.success.body')
+        header: t('.error.header'),
+        body: t('.error.body')
       }
 
       redirect_back(fallback_location: root_path)
@@ -52,5 +52,11 @@ class Admin::BooksController < ApplicationController
   end
 
   private
-  def book_params; end
+  def book_params
+    params.require(:book).permit(:title, :edition,
+      :series, :isbn, :call_number, :language,
+      :page_count, :book_format, :total_count,
+      :publisher_id, :publication_address,
+      :publication_year, :cover)
+  end
 end

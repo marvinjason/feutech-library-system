@@ -1,1 +1,12 @@
-new for publishers
+<h2 class="ui header">New Publisher</h2>
+
+<div class="ui form">
+  <%= form_for @publisher, url: admin_publishers_path do |f| %>
+    <div class="field">
+      <label>Name</label>
+      <%= f.text_field :name, required: true, placeholder: 'Name' %>
+    </div>
+
+    <%= f.submit 'Create', class: 'ui submit button' %>
+  <% end %>
+</div>

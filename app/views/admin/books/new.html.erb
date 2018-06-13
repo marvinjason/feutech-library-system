@@ -1,1 +1,78 @@
-new for books
+<h2 class="ui header">New Book</h2>
+
+<div class="ui form">
+  <%= form_for @book, url: admin_books_path do |f| %>
+    <div class="field">
+      <label>Title</label>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <label>Edition</label>
+      <%= f.text_field :edition %>
+    </div>
+
+    <div class="field">
+      <label>Series</label>
+      <%= f.text_field :series %>
+    </div>
+
+    <div class="field">
+      <label>ISBN</label>
+      <%= f.text_field :isbn %>
+    </div>
+
+    <div class="field">
+      <label>Call Number</label>
+      <%= f.text_field :call_number %>
+    </div>
+
+    <div class="field">
+      <label>Language</label>
+      <%= f.text_field :language %>
+    </div>
+
+    <div class="field">
+      <label>Page Count</label>
+      <%= f.number_field :page_count %>
+    </div>
+
+    <div class="field">
+      <label>Book Format</label>
+      <%= f.text_field :book_format %>
+    </div>
+
+    <div class="field">
+      <label>Number of Copies</label>
+      <%= f.number_field :total_count %>
+    </div>
+
+    <div class="field">
+      <label>Publisher</label>
+      <%= f.collection_select :publisher_id, Publisher.all, :id, :name %>
+    </div>
+
+    <div class="field">
+      <label>Publication Address</label>
+      <%= f.text_field :publication_address %>
+    </div>
+
+    <div class="field">
+      <label>Publication Year</label>
+      <%= f.number_field :publication_year %>
+    </div>
+
+    <div class="field">
+      <label>Book Cover</label>
+
+      <%= f.file_field :cover, required: true, id: 'file-upload', class: 'inputfile' %>
+
+      <label for="file-upload" class="ui button">
+        <i class="ui upload icon"></i> 
+        Upload image
+      </label>
+    </div>
+
+    <%= f.submit 'Create', class: 'ui submit button' %>
+  <% end %>
+</div>

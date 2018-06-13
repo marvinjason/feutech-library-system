@@ -29,3 +29,12 @@
 #review-field {
   display: none;
 }
+
+.book-cover {
+  display: block !important;
+  max-width:290px !important;
+  max-height:150px !important;
+  width: auto !important;
+  height: auto !important;
+  margin: auto !important;
+}

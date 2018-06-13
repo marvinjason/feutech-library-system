@@ -68,3 +68,25 @@ en:
       error:
         header: Error
         body: An error occured while rejecting the reservation
+  admin:
+    authors:
+      success:
+        header: Success
+        body: You have successfully created the author
+      error:
+        header: Error
+        body: An error occured while creating the reservation
+    books:
+      success:
+        header: Success
+        body: You have successfully created the book
+      error:
+        header: Error
+        body: An error occured while creating the book
+    publishers:
+      success:
+        header: Success
+        body: You have successfully created the publisher
+      error:
+        header: Error
+        body: An error occured while creating the publisher

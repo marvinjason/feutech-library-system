@@ -43,8 +43,8 @@ class Admin::PublishersController < ApplicationController
       redirect_to action: :index
     else
       flash[:negative] = {
-        header: t('.success.header'),
-        body: t('.success.body')
+        header: t('.error.header'),
+        body: t('.error.body')
       }
 
       redirect_back(fallback_location: root_path)
