@@ -19,3 +19,5 @@
 .byebug_history
 /config/initializers/dev_environment.rb
 public/uploads/
+# Ignore application configuration
+/config/application.yml
