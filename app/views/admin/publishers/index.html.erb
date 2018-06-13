@@ -20,6 +20,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -27,6 +28,15 @@
     <% @publishers.each do |publisher| %>
       <tr>
         <td><%= publisher.name %></td>
+        <td>
+          <%= link_to edit_admin_publisher_path(publisher), class: 'circular ui icon button' do %>
+            <i class="edit icon"></i>
+          <% end %>
+
+          <%= link_to admin_publisher_path(publisher), method: :delete, class: 'circular ui icon button', data: {confirm: 'Are you sure you want to proceed?'} do %>
+            <i class="trash icon"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

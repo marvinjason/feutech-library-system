@@ -51,6 +51,26 @@ class Admin::PublishersController < ApplicationController
     end
   end
 
+  def destroy
+    publisher = Publisher.find(params[:id])
+
+    if publisher.destroy
+      flash[:success] = {
+        header: t('.success.header'),
+        body: t('.success.body')
+      }
+
+      redirect_to action: :index
+    else
+      flash[:negative] = {
+        header: t('.error.header'),
+        body: t('.error.body')
+      }
+
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   private
   def publisher_params
     params.require(:publisher).permit(:name)
