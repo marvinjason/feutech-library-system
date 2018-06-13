@@ -1,0 +1,47 @@
+<div class="ui form">
+  <%= form_tag search_publishers_path do %>
+    <div class="inline field">
+      <select class="ui dropdown" name="column">
+        <option value="name">Name</option>
+      </select>
+
+      <div class="ui icon input">
+        <input type="text" name="search" placeholder="Search" align="bottom">
+
+        <button class="circular ui icon button left-margin-1">
+          <i class="search icon"></i>
+        </button>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<table class="ui fixed compact table">
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @publishers.each do |publisher| %>
+      <tr>
+        <td><%= publisher.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="ui pagination menu">
+  <%= link_to admin_publishers_path(page: @previous_page), class: 'icon item center' do %>
+    <i class="left arrow icon"></i>
+  <% end %>
+
+  <% @page_count.times do |i| %>
+    <%= link_to "#{i + 1}", admin_publishers_path(page: i + 1), class: "item #{'active' if @current_page - 1 == i}" %>
+  <% end %>
+
+  <%= link_to admin_publishers_path(page: @next_page), class: 'icon item center' do %>
+    <i class="right arrow icon"></i>
+  <% end %>
+</div>

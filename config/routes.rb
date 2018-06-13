@@ -28,4 +28,16 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'auth/callbacks'
   }
 
+  namespace :admin do
+    resources :books
+    resources :authors
+    resources :publishers
+  end
+
+  post 'admin/books/search', as: 'search_books'
+
+  post 'admin/authors/search', as: 'search_authors'
+
+  post 'admin/publishers/search', as: 'search_publishers'
+
 end

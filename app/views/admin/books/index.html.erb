@@ -1,0 +1,50 @@
+<div class="ui form">
+  <%= form_tag search_books_path do %>
+    <div class="inline field">
+      <select class="ui dropdown" name="column">
+        <option value="isbn">ISBN</option>
+        <option value="title">Title</option>
+      </select>
+
+      <div class="ui icon input">
+        <input type="text" name="search" placeholder="Search" align="bottom">
+
+        <button class="circular ui icon button left-margin-1">
+          <i class="search icon"></i>
+        </button>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<table class="ui fixed compact table">
+  <thead>
+    <tr>
+      <th>ISBN</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.isbn %></td>
+        <td><%= book.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="ui pagination menu">
+  <%= link_to admin_books_path(page: @previous_page), class: 'icon item center' do %>
+    <i class="left arrow icon"></i>
+  <% end %>
+
+  <% @page_count.times do |i| %>
+    <%= link_to "#{i + 1}", admin_books_path(page: i + 1), class: "item #{'active' if @current_page - 1 == i}" %>
+  <% end %>
+
+  <%= link_to admin_books_path(page: @next_page), class: 'icon item center' do %>
+    <i class="right arrow icon"></i>
+  <% end %>
+</div>
