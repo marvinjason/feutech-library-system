@@ -77,6 +77,6 @@ class Admin::BooksController < ApplicationController
       :series, :isbn, :call_number, :language,
       :page_count, :book_format, :total_count,
       :publisher_id, :publication_address,
-      :publication_year, :cover)
+      :publication_year, :description, :cover)
   end
 end

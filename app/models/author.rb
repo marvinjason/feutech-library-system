@@ -5,5 +5,5 @@ class Author < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  validates :last_name, :first_name, :description, :avatar, presence: true
+  validates :last_name, :first_name, :avatar, presence: true
 end
