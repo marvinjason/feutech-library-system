@@ -3,11 +3,47 @@ class BooksController < ApplicationController
   before_action :authenticate_user!, only: [:reserve, :review]
 
   def featured
-    @books = Book.limit(5)
+    @books =
+      Book.all.sort do |a, b|
+        a.reviews.sum(&:rating) <=> b.reviews.sum(&:rating)
+      end.reverse.first(5)
   end
 
   def index
-    @books = Book.page(params[:page])
+    if request.post?
+      column = params[:column]
+      search_term = params[:search]
+
+      if search_term.blank?
+        @books = Book.order(created_at: :desc)
+      else
+        @books = Book.where("#{column} = ?", search_term)
+                     .order(created_at: :desc)
+      end
+    else
+      @books = Book.order(created_at: :desc)
+    end
+
+    @books = @books.page(params[:page])
+    @page_count = @books.total_pages
+    @current_page = @books.current_page
+    @previous_page = @books.prev_page
+    @next_page = @books.next_page
+  end
+
+  def search
+    column = params[:column]
+    search_term = params[:search]
+
+    if search_term.blank?
+      @reservations = current_user.reservations
+                                  .order(:created_at)
+    else
+      @reservations = current_user.reservations
+                                  .joins(:book)
+                                  .where("#{column} = ?", search_term)
+                                  .order(:created_at)
+    end
   end
 
   def show

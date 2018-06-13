@@ -1,23 +1,65 @@
-<div class="ui cards">
-  <% @books.each do |book| %>
+<div class="ui form">
+  <%= form_tag books_path do %>
+    <div class="inline field">
+      <select class="ui dropdown" name="column">
+        <option value="isbn">ISBN</option>
+        <option value="title">Title</option>
+        <option value="call_number">Call Number</option>
+      </select>
 
-    <div class="card">
-      <div class="image">
-      <%= image_tag book.cover.url, class: 'book-cover' %>
+      <div class="ui icon input">
+        <input type="text" name="search" placeholder="Search" align="bottom">
+
+        <button class="circular ui icon button left-margin-1">
+          <i class="search icon"></i>
+        </button>
       </div>
+    </div>
+  <% end %>
+</div>
 
+<div class="ui items">
+  <% @books.each do |book| %>
+    <div class="item">
+      <div class="image cover-preview">
+        <%= image_tag book.cover.url %>
+      </div>
       <div class="content">
         <%= link_to book.title, book, class: 'header' %>
-
         <div class="meta">
-          <span class="date"><%= book.author %></span>
+          <span>
+            <%= book.author %>
+            &middot;
+            <%= book.publication_year %>
+          </span>
+        </div>
+        <div class="description">
+          <p><%= truncate(book.description, length: 255) %></p>
+        </div>
+        <div class="extra">
+          <%= book.total_count %> copies available
+          <%= link_to book, method: :post do %>
+            <div class="ui right floated basic button">
+              <i class="check icon"></i>
+              Reserve
+            </div>
+          <% end %>
         </div>
       </div>
-
-      <%= link_to book, class: 'ui bottom attached button' do %>
-        <i class="bars icon"></i>
-        View
-      <% end %>
     </div>
+  <% end %>
+</div>
+
+<div class="ui pagination menu">
+  <%= link_to books_path(page: @previous_page), class: 'icon item center' do %>
+    <i class="left arrow icon"></i>
+  <% end %>
+
+  <% @page_count.times do |i| %>
+    <%= link_to "#{i + 1}", books_path(page: i + 1), class: "item #{'active' if @current_page - 1 == i}" %>
+  <% end %>
+
+  <%= link_to books_path(page: @next_page), class: 'icon item center' do %>
+    <i class="right arrow icon"></i>
   <% end %>
 </div>
