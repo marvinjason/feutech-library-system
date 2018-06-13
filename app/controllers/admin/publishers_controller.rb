@@ -51,6 +51,30 @@ class Admin::PublishersController < ApplicationController
     end
   end
 
+  def edit
+    @publisher = Publisher.find(params[:id])
+  end
+
+  def update
+    publisher = Publisher.find(params[:id])
+
+    if publisher.update(publisher_params)
+      flash[:success] = {
+        header: t('.success.header'),
+        body: t('.success.body')
+      }
+
+      redirect_to action: :index
+    else
+      flash[:negative] = {
+        header: t('.error.header'),
+        body: t('.error.body')
+      }
+
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def destroy
     publisher = Publisher.find(params[:id])
 

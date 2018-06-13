@@ -1,7 +1,7 @@
-<h2 class="ui header">New Publisher</h2>
+<h2 class="ui header">Edit Publisher</h2>
 
 <div class="ui form">
-  <%= form_for @publisher, url: admin_publishers_path do |f| %>
+  <%= form_for @publisher, url: admin_publisher_path do |f| %>
     <div class="field">
       <label>Name</label>
       <%= f.text_field :name, required: true, placeholder: 'Name' %>

@@ -51,6 +51,30 @@ class Admin::AuthorsController < ApplicationController
     end
   end
 
+  def edit
+    @author = Author.find(params[:id])
+  end
+
+  def update
+    author = Author.find(params[:id])
+
+    if author.update(author_params)
+      flash[:success] = {
+        header: t('.success.header'),
+        body: t('.success.body')
+      }
+
+      redirect_to action: :index
+    else
+      flash[:negative] = {
+        header: t('.error.header'),
+        body: t('.error.body')
+      }
+
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def destroy
     author = Author.find(params[:id])
 

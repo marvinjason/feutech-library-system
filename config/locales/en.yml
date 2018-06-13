@@ -77,6 +77,13 @@ en:
         error:
           header: Error
           body: An error occured while creating the author
+      update:
+        success:
+          header: Success
+          body: You have successfully updated the author
+        error:
+          header: Error
+          body: An error occured while updating the author
       destroy:
         success:
           header: Success
@@ -92,6 +99,13 @@ en:
         error:
           header: Error
           body: An error occured while creating the book
+      update:
+        success:
+          header: Success
+          body: You have successfully updated the book
+        error:
+          header: Error
+          body: An error occured while updating the book
       destroy:
         success:
           header: Success
@@ -107,6 +121,13 @@ en:
         error:
           header: Error
           body: An error occured while creating the publisher
+      update:
+        success:
+          header: Success
+          body: You have successfully updated the publisher
+        error:
+          header: Error
+          body: An error occured while updating the publisher
       destroy:
         success:
           header: Success

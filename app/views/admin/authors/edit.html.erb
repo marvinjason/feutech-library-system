@@ -1,7 +1,7 @@
-<h2 class="ui header">New Author</h2>
+<h2 class="ui header">Edit Author</h2>
 
 <div class="ui form">
-  <%= form_for @author, url: admin_authors_path do |f| %>
+  <%= form_for @author, url: admin_author_path do |f| %>
     <div class="fields">
       <div class="field">
         <label>First name</label>
@@ -22,7 +22,7 @@
     <div class="field">
       <label>Avatar</label>
 
-      <%= f.file_field :avatar, id: 'file-upload', class: 'inputfile', required: true %>
+      <%= f.file_field :avatar, id: 'file-upload', class: 'inputfile' %>
 
       <label for="file-upload" class="ui button">
         <i class="ui upload icon"></i> 

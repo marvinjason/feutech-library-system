@@ -51,6 +51,30 @@ class Admin::BooksController < ApplicationController
     end
   end
 
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    book = Book.find(params[:id])
+
+    if book.update(book_params)
+      flash[:success] = {
+        header: t('.success.header'),
+        body: t('.success.body')
+      }
+
+      redirect_to book
+    else
+      flash[:negative] = {
+        header: t('.error.header'),
+        body: t('.error.body')
+      }
+
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def destroy
     book = Book.find(params[:id])
 

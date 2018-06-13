@@ -1,7 +1,7 @@
-<h2 class="ui header">New Book</h2>
+<h2 class="ui header">Edit Book</h2>
 
 <div class="ui form">
-  <%= form_for @book, url: admin_books_path do |f| %>
+  <%= form_for @book, url: admin_book_path do |f| %>
     <div class="field">
       <label>Title</label>
       <%= f.text_field :title, required: true %>
@@ -70,7 +70,7 @@
     <div class="field">
       <label>Book Cover</label>
 
-      <%= f.file_field :cover, required: true, id: 'file-upload', class: 'inputfile' %>
+      <%= f.file_field :cover, id: 'file-upload', class: 'inputfile' %>
 
       <label for="file-upload" class="ui button">
         <i class="ui upload icon"></i> 
