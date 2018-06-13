@@ -7,4 +7,6 @@ class Comment < ApplicationRecord
     optional: true
   has_many :comments, dependent: :destroy
   has_many :logs, as: :logable, dependent: :destroy
+
+  validates :body, presence: true
 end

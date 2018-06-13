@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  validates :last_name, :first_name, :role, :avatar, presence: true
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -17,7 +19,7 @@ class User < ApplicationRecord
     user = User.where(email: auth_hash.info.email).first
 
     unless user
-      user = User.create(
+      user = User.new(
         provider: auth_hash.provider,
         uid: auth_hash.uid,
         email: auth_hash.info.email,

@@ -10,6 +10,10 @@ class Book < ApplicationRecord
 
   mount_uploader :cover, AvatarUploader
 
+  validates :title, :publication_address, :publication_year, :description,
+            :edition, :isbn, :call_number, :language, :page_count,
+            :book_format, :total_count, :cover, presence: true
+
   def author
     authors = self.authors.map { |a| "#{a.first_name} #{a.last_name}" }
     authors.join(', ')
