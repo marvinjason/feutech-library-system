@@ -46,11 +46,22 @@
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= image_tag 'uname.png', align: 'middle' %>&nbsp;
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: 'last name' %>
+        <br><br>
+
+        <%= image_tag 'uname.png', align: 'middle' %>&nbsp;
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: 'first name' %>
+        <br><br>
+
+        <%= image_tag 'uname.png', align: 'middle' %>&nbsp;
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'email' %>
         <br><br>
 
         <%= image_tag 'pass.png', align: 'middle' %>&nbsp;
         <%= f.password_field :password, autocomplete: "off", placeholder: 'password' %>
+        <br><br>
+
+        <%= f.file_field :avatar, autocomplete: "off", class: 'left-margin-7' %>
         <br><br>
 
         <%= f.submit "Sign up" %>

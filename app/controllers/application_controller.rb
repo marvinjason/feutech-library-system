@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :store_current_location, unless: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
   layout :resolve_layout
 
   protected
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
   private
   def store_current_location
     store_location_for(:user, request.url)
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :avatar])
   end
 
   def resolve_layout
