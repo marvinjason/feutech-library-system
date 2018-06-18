@@ -58,6 +58,9 @@ class ReservationsController < ApplicationController
     reservation.status = 'approved'
 
     if reservation.save
+      book = reservation.book
+      book.update(total_count: book.total_count - 1)
+
       Log.create(
         user: current_user,
         logable: reservation,
