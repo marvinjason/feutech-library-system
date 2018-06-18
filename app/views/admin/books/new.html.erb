@@ -68,6 +68,11 @@
     </div>
 
     <div class="field">
+      <label>Authors</label>
+      <%= f.collection_select :author_ids, Author.all, :id, :first_name, {}, {multiple: true, class: 'ui fluid dropdown'} %>
+    </div>
+
+    <div class="field">
       <label>Book Cover</label>
 
       <%= f.file_field :cover, required: true, id: 'file-upload', class: 'inputfile' %>

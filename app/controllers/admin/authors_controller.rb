@@ -1,102 +1,104 @@
-class Admin::AuthorsController < ApplicationController
-  def index
-    @authors = Author.order(:created_at).page(params[:page])
-    @page_count = @authors.total_pages
-    @current_page = @authors.current_page
-    @previous_page = @authors.prev_page
-    @next_page = @authors.next_page
-  end
-
-  def search
-    column = params[:column]
-    search_term = params[:search]
-
-    if search_term.blank?
-      @authors = Author.order(:created_at)
-    else
-      @authors = Author.where("#{column} = ?", search_term)
-                       .order(:created_at)
+module Admin
+  class AuthorsController < BaseController
+    def index
+      @authors = Author.order(:created_at).page(params[:page])
+      @page_count = @authors.total_pages
+      @current_page = @authors.current_page
+      @previous_page = @authors.prev_page
+      @next_page = @authors.next_page
     end
 
-    @authors = @authors.page(params[:page])
-    @page_count = @authors.total_pages
-    @current_page = @authors.current_page
-    @previous_page = @authors.prev_page
-    @next_page = @authors.next_page
+    def search
+      column = params[:column]
+      search_term = params[:search]
 
-    render 'admin/authors/index'
-  end
+      if search_term.blank?
+        @authors = Author.order(:created_at)
+      else
+        @authors = Author.where("#{column} = ?", search_term)
+                         .order(:created_at)
+      end
 
-  def new
-    @author = Author.new
-  end
+      @authors = @authors.page(params[:page])
+      @page_count = @authors.total_pages
+      @current_page = @authors.current_page
+      @previous_page = @authors.prev_page
+      @next_page = @authors.next_page
 
-  def create
-    author = Author.new(author_params)
-
-    if author.save
-      flash[:success] = {
-        header: t('.success.header'),
-        body: t('.success.body')
-      }
-
-      redirect_to action: :index
-    else
-      flash[:negative] = {
-        header: t('.error.header'),
-        body: t('.error.body')
-      }
-
-      redirect_back(fallback_location: root_path)
+      render 'admin/authors/index'
     end
-  end
 
-  def edit
-    @author = Author.find(params[:id])
-  end
-
-  def update
-    author = Author.find(params[:id])
-
-    if author.update(author_params)
-      flash[:success] = {
-        header: t('.success.header'),
-        body: t('.success.body')
-      }
-
-      redirect_to action: :index
-    else
-      flash[:negative] = {
-        header: t('.error.header'),
-        body: t('.error.body')
-      }
-
-      redirect_back(fallback_location: root_path)
+    def new
+      @author = Author.new
     end
-  end
 
-  def destroy
-    author = Author.find(params[:id])
+    def create
+      author = Author.new(author_params)
 
-    if author.destroy
-      flash[:success] = {
-        header: t('.success.header'),
-        body: t('.success.body')
-      }
+      if author.save
+        flash[:success] = {
+          header: t('.success.header'),
+          body: t('.success.body')
+        }
 
-      redirect_to action: :index
-    else
-      flash[:negative] = {
-        header: t('.error.header'),
-        body: t('.error.body')
-      }
+        redirect_to action: :index
+      else
+        flash[:negative] = {
+          header: t('.error.header'),
+          body: t('.error.body')
+        }
 
-      redirect_back(fallback_location: root_path)
+        redirect_back(fallback_location: root_path)
+      end
     end
-  end
 
-  private
-  def author_params
-    params.require(:author).permit(:last_name, :first_name, :description, :avatar)
+    def edit
+      @author = Author.find(params[:id])
+    end
+
+    def update
+      author = Author.find(params[:id])
+
+      if author.update(author_params)
+        flash[:success] = {
+          header: t('.success.header'),
+          body: t('.success.body')
+        }
+
+        redirect_to action: :index
+      else
+        flash[:negative] = {
+          header: t('.error.header'),
+          body: t('.error.body')
+        }
+
+        redirect_back(fallback_location: root_path)
+      end
+    end
+
+    def destroy
+      author = Author.find(params[:id])
+
+      if author.destroy
+        flash[:success] = {
+          header: t('.success.header'),
+          body: t('.success.body')
+        }
+
+        redirect_to action: :index
+      else
+        flash[:negative] = {
+          header: t('.error.header'),
+          body: t('.error.body')
+        }
+
+        redirect_back(fallback_location: root_path)
+      end
+    end
+
+    private
+    def author_params
+      params.require(:author).permit(:last_name, :first_name, :description, :avatar)
+    end
   end
 end
