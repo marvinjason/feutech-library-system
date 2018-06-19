@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :store_location_for_review, only: :review
   before_action :authenticate_user!, only: [:reserve, :review]
+  before_action :guard_reserve, only: [:reserve]
 
   def featured
     @books =
@@ -142,5 +143,16 @@ class BooksController < ApplicationController
   def store_location_for_review
     book = Book.find(params[:id])
     store_location_for(:user, book_path(book))
+  end
+
+  def guard_reserve
+    if current_user.role != 'user'
+      flash[:negative] = {
+        header: t('.error.header'),
+        body: t('.error.body')
+      }
+
+      redirect_back(fallback_location: root_path)
+    end
   end
 end

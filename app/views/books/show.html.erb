@@ -34,7 +34,7 @@
   <div class="item">
     <div class="image">
       <%= image_tag @book.cover.url %>
-      <% if current_user&.role == 'librarian' %>
+      <% if ['librarian', 'admin'].include?(current_user&.role) %>
         <%= link_to edit_admin_book_path(@book), class: 'ui fluid compact labeled icon button top-margin-1' do %>
           <i class="edit icon"></i>
           Edit

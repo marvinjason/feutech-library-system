@@ -52,6 +52,10 @@ en:
       error:
         header: Error
         body: An error occured while posting your comment
+    guard_reserve:
+      error:
+        header: Error
+        body: An error occured while requesting this book
 
   reservations:
     approve:
