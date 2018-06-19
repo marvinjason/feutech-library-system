@@ -58,6 +58,17 @@ User.create(
   role: 'librarian'
 )
 
+User.create(
+  email: 'admin@gmail.com',
+  password: '123456',
+  last_name: 'Ancheta',
+  first_name: 'Michael',
+  contact_number: '09123456789',
+  address: 'Philippines',
+  remote_avatar_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqLwXLSt7nY_iW0vRguTgVIH1gjwuhx28PjI_Dc964oTRx0No',
+  role: 'admin'
+)
+
 Book.all.each do |book|
   3.times do
     Review.create(
