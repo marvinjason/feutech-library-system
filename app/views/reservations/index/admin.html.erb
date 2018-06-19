@@ -22,6 +22,7 @@
       <th>ISBN</th>
       <th>Title</th>
       <th>Author</th>
+      <th>Requested By</th>
       <th>Loan Period</th>
       <th>Status</th>
       <th>Actions</th>
@@ -41,6 +42,7 @@
           <% end %>
         </td>
 
+        <td><%= "#{reservation.user.first_name} #{reservation.user.last_name}" %></td>
         <td><%= "#{reservation.start.strftime('%b %e')} – #{reservation.end.strftime('%b %e')}" %></td>
 
         <td>
