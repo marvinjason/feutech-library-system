@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     resources :books
     resources :authors
     resources :publishers
+    resources :users
   end
 
   post 'admin/books/search', as: 'search_books'
@@ -41,5 +42,7 @@ Rails.application.routes.draw do
   post 'admin/authors/search', as: 'search_authors'
 
   post 'admin/publishers/search', as: 'search_publishers'
+
+  post 'admin/users/search', as: 'search_users'
 
 end

@@ -1,3 +1,34 @@
-<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-
-admin home
+<div class="ui feed">
+  <% @logs.each do |log| %>
+    <% case log.log_type %>
+    <% when 'reservation' %>
+      <%= render 'partials/events/requested_card',
+          avatar_url: log.user.avatar.url,
+          created_at: log.created_at,
+          requester_name: log.user.first_name,
+          book: log.logable.book,
+          request_start: log.logable.start.strftime('%b %e'),
+          request_end: log.logable.end.strftime('%b %e'),
+          duration: distance_of_time_in_words(log.logable.start, log.logable.end),
+          status: log.logable.status,
+          reservation_id: log.logable.id
+      %>
+    <% when 'approval' %>
+      <%= render 'partials/events/approved',
+          avatar_url: log.user.avatar.url,
+          created_at: log.created_at,
+          book: log.logable.book,
+          approver_name: log.user == current_user ? 'You' : log.user.first_name,
+          requester_name: "#{log.logable.user.first_name}'s"
+      %>
+    <% when 'rejection' %>
+      <%= render 'partials/events/rejected',
+          avatar_url: log.user.avatar.url,
+          created_at: log.created_at,
+          book: log.logable.book,
+          rejecter_name: log.user == current_user ? 'You' : log.user.first_name,
+          requester_name: "#{log.logable.user.first_name}'s"
+      %>
+    <% end %>
+  <% end %>
+</div>

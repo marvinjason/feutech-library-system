@@ -14,6 +14,10 @@ class PagesController < ApplicationController
       rejections = Log.where(log_type: 'rejection').order(created_at: :desc)
       @logs = order_chronologically(reservations + approvals + rejections)
     when 'admin'
+      reservations = Log.where(log_type: 'reservation').order(created_at: :desc)
+      approvals = Log.where(log_type: 'approval').order(created_at: :desc)
+      rejections = Log.where(log_type: 'rejection').order(created_at: :desc)
+      @logs = order_chronologically(reservations + approvals + rejections)
     end
 
     render template

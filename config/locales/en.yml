@@ -135,3 +135,25 @@ en:
         error:
           header: Error
           body: An error occured while deleting the publisher
+    users:
+      create:
+        success:
+          header: Success
+          body: You have successfully created the user
+        error:
+          header: Error
+          body: An error occured while creating the user
+      update:
+        success:
+          header: Success
+          body: You have successfully updated the user
+        error:
+          header: Error
+          body: An error occured while updating the user
+      destroy:
+        success:
+          header: Success
+          body: You have successfully deleted the user
+        error:
+          header: Error
+          body: An error occured while deleting the user

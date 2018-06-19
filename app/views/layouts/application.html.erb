@@ -65,6 +65,24 @@
                   <% end %>
                 </div>
               </div>
+
+              <% if current_user.role == 'admin' %>
+                <div class="ui left pointing dropdown link item">
+                  <i class="user icon"></i> Users
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    <%= link_to admin_users_path, class: 'item' do %>
+                      <i class="list icon"></i> List
+                    <% end %>
+
+                    <% if false %>
+                    <%= link_to new_admin_user_path, class: 'item' do %>
+                      <i class="plus icon"></i> New
+                    <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
             </div>
           </div>
         <% end %>

@@ -48,6 +48,27 @@ class ReservationsController < ApplicationController
       @current_page = @reservations.current_page
       @previous_page = @reservations.prev_page
       @next_page = @reservations.next_page
+    when 'admin'
+      if request.post?
+        column = params[:column]
+        search_term = params[:search]
+
+        if search_term.blank?
+          @reservations = Reservation.order(:created_at)
+        else
+          @reservations = Reservation.joins(:book)
+                                     .where("#{column} = ?", search_term)
+                                     .order(:created_at)
+        end
+      else
+        @reservations = Reservation.order(:created_at)
+      end
+
+      @reservations = @reservations.page(params[:page])
+      @page_count = @reservations.total_pages
+      @current_page = @reservations.current_page
+      @previous_page = @reservations.prev_page
+      @next_page = @reservations.next_page
     end
 
     render template

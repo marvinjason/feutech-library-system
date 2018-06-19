@@ -1,0 +1,82 @@
+<div class="ui form">
+  <%= form_tag search_reservations_path do %>
+    <div class="inline field">
+      <select class="ui dropdown" name="column">
+        <option value="title">Title</option>
+      </select>
+
+      <div class="ui icon input">
+        <input type="text" name="search" placeholder="Search" align="bottom">
+
+        <button class="circular ui icon button left-margin-1">
+          <i class="search icon"></i>
+        </button>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<table class="ui fixed compact table">
+  <thead>
+    <tr>
+      <th>ISBN</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Loan Period</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.book.isbn %></td>
+        <td><%= link_to reservation.book.title, reservation.book, class: 'black-font' %></td>
+        <td>
+          <% reservation.book.authors.each do |author| %>
+            <p>
+              <%= link_to "#{author.first_name} #{author.last_name}", author, class: 'black-font' %>
+            </p>
+          <% end %>
+        </td>
+
+        <td><%= "#{reservation.start.strftime('%b %e')} – #{reservation.end.strftime('%b %e')}" %></td>
+
+        <td>
+          <% if reservation.status == 'approved' %>
+            <a class="ui green label">Approved</a>
+          <% elsif reservation.status == 'rejected' %>
+            <a class="ui red label">Rejected</a>
+          <% else %>
+            <a class="ui yellow label">Pending Approval</a>
+          <% end %>
+        </td>
+
+        <td>
+          <%= link_to approve_path(reservation), method: :post, class: 'circular ui icon button' do %>
+            <i class="check icon"></i>
+          <% end %>
+
+          <%= link_to reject_path(reservation), method: :post, class: 'circular ui icon button' do %>
+            <i class="remove icon"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="ui pagination menu">
+  <%= link_to reservations_path(page: @previous_page), class: 'icon item center' do %>
+    <i class="left arrow icon"></i>
+  <% end %>
+
+  <% @page_count.times do |i| %>
+    <%= link_to "#{i + 1}", reservations_path(page: i + 1), class: "item #{'active' if @current_page - 1 == i}" %>
+  <% end %>
+
+  <%= link_to reservations_path(page: @next_page), class: 'icon item center' do %>
+    <i class="right arrow icon"></i>
+  <% end %>
+</div>
