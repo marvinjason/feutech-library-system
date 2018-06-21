@@ -10,12 +10,12 @@
         <%= form_tag @book, id: 'loan' do %>
           <div class="ui label">
             From
-            <input type="date" name="from" required>
+            <input type="date" name="from" id="form-from" required>
           </div>
 
           <div class="ui label">
             To
-            <input type="date" name="to" required>
+            <input type="date" name="to" id="form-to" required>
           </div>
         <% end %>
       </div>
@@ -23,7 +23,7 @@
   </div>
 
   <div class="actions">
-    <button type="submit" form="loan" class="ui positive right labeled icon button">
+    <button type="submit" form="loan" class="ui positive right labeled icon button" id="form-button" disabled>
       Reserve
       <i class="checkmark icon"></i>
     </button>
