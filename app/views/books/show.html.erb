@@ -10,12 +10,12 @@
         <%= form_tag @book, id: 'loan' do %>
           <div class="ui label">
             From
-            <input type="date" name="from" id="form-from" required>
+            <input type="date" name="from" id="form-from" min="<%= Date.today.strftime('%F') %>" required>
           </div>
 
           <div class="ui label">
             To
-            <input type="date" name="to" id="form-to" required>
+            <input type="date" name="to" id="form-to" min="<%= Date.today.strftime('%F') %>" required>
           </div>
         <% end %>
       </div>
